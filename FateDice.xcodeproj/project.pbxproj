@@ -34,6 +34,8 @@
 		F7B57C51180AF712003C8704 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B57C4D180AF712003C8704 /* plus.png */; };
 		F7B57C52180AF712003C8704 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B57C4E180AF712003C8704 /* plus@2x.png */; };
 		F7B57C54180AFA90003C8704 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B57C53180AFA90003C8704 /* AppIcon.png */; };
+		F7B57C56180C7C07003C8704 /* dice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7B57C55180C7C07003C8704 /* dice.mp3 */; };
+		F7B57C58180C7E63003C8704 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F7B57C57180C7E63003C8704 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		F7B57C4D180AF712003C8704 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		F7B57C4E180AF712003C8704 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		F7B57C53180AFA90003C8704 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		F7B57C55180C7C07003C8704 /* dice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dice.mp3; sourceTree = "<group>"; };
+		F7B57C57180C7E63003C8704 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,14 +162,16 @@
 			isa = PBXGroup;
 			children = (
 				F7B57C53180AFA90003C8704 /* AppIcon.png */,
+				F7B57C55180C7C07003C8704 /* dice.mp3 */,
+				F78186DB180A5C1A000EB483 /* FateDice-Info.plist */,
+				F78186E1180A5C1A000EB483 /* FateDice-Prefix.pch */,
+				F78186DC180A5C1A000EB483 /* InfoPlist.strings */,
+				F78186DF180A5C1A000EB483 /* main.m */,
 				F7B57C4B180AF712003C8704 /* minus.png */,
 				F7B57C4C180AF712003C8704 /* minus@2x.png */,
 				F7B57C4D180AF712003C8704 /* plus.png */,
 				F7B57C4E180AF712003C8704 /* plus@2x.png */,
-				F78186DB180A5C1A000EB483 /* FateDice-Info.plist */,
-				F78186DC180A5C1A000EB483 /* InfoPlist.strings */,
-				F78186DF180A5C1A000EB483 /* main.m */,
-				F78186E1180A5C1A000EB483 /* FateDice-Prefix.pch */,
+				F7B57C57180C7E63003C8704 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -360,8 +366,10 @@
 				F78186DE180A5C1A000EB483 /* InfoPlist.strings in Resources */,
 				F7B57C51180AF712003C8704 /* plus.png in Resources */,
 				F7B57C52180AF712003C8704 /* plus@2x.png in Resources */,
+				F7B57C56180C7C07003C8704 /* dice.mp3 in Resources */,
 				F7B57C50180AF712003C8704 /* minus@2x.png in Resources */,
 				F78186E6180A5C1A000EB483 /* Images.xcassets in Resources */,
+				F7B57C58180C7E63003C8704 /* README.md in Resources */,
 				F7B57C4F180AF712003C8704 /* minus.png in Resources */,
 				F7B57C54180AFA90003C8704 /* AppIcon.png in Resources */,
 			);

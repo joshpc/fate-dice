@@ -24,18 +24,25 @@
 	return self;
 }
 
+
+- (CGSize)diceSizeForRowCount:(NSUInteger)numberOfRows
+{
+	CGRect bounds = self.bounds;
+	CGFloat maxDiceHeight = roundf((bounds.size.height - (2 - (numberOfRows - 1)) * kJTViewPadding) / numberOfRows);
+	CGFloat maxDiceWidth = roundf((bounds.size.width - 3 * kJTViewPadding) / 3.0f);
+	CGFloat widthHeight = MIN(maxDiceHeight, maxDiceWidth);
+	return CGSizeMake(widthHeight, widthHeight);
+}
+
 - (NSMutableArray*)createDiceRollViewsFromRolls:(NSArray*)diceRolls
 {
 	CGRect bounds = self.bounds;
 	NSMutableArray *diceRollViews = [[NSMutableArray alloc] init];
 	NSUInteger numberOfRows = (NSUInteger)ceilf((CGFloat)[diceRolls count] / (CGFloat)kJTMaxDicePerRow);
 	if (numberOfRows > 0) {
-		//Pick the largest square dice that we can
-		CGFloat maxDiceHeight = roundf((bounds.size.height - (2 - (numberOfRows - 1)) * kJTViewPadding) / numberOfRows);
-		CGFloat maxDiceWidth = roundf((bounds.size.width - 3 * kJTViewPadding) / 3.0f);
-		CGFloat widthHeight = MIN(maxDiceHeight, maxDiceWidth);
-		CGFloat horizontalPadding = roundf((bounds.size.width - 2 * kJTViewPadding - kJTMaxDicePerRow * widthHeight) / (kJTMaxDicePerRow + 1));
-		CGFloat verticalPadding = roundf((bounds.size.height - 2 * kJTViewPadding - numberOfRows * widthHeight) / (numberOfRows + 1));
+		CGSize diceSize = [self diceSizeForRowCount:numberOfRows];
+		CGFloat horizontalPadding = roundf((bounds.size.width - 2 * kJTViewPadding - kJTMaxDicePerRow * diceSize.width) / (kJTMaxDicePerRow + 1));
+		CGFloat verticalPadding = roundf((bounds.size.height - 2 * kJTViewPadding - numberOfRows * diceSize.height) / (numberOfRows + 1));
 		CGFloat baseXOffset = bounds.origin.x + bounds.size.width + kJTViewPadding + horizontalPadding;
 		CGFloat baseYOffset = bounds.origin.y + kJTViewPadding + verticalPadding;
 		for (NSInteger i = 0; i < [diceRolls count]; ++i) {
@@ -43,8 +50,9 @@
 			NSUInteger row = i / kJTMaxDicePerRow;
 			NSUInteger column = i % kJTMaxDicePerRow;
 			
-			JTDiceView *diceView = [[JTDiceView alloc] initWithFrame:CGRectMake(baseXOffset + column * (widthHeight + horizontalPadding) + arc4random() % (NSUInteger)(horizontalPadding/2),
-																				baseYOffset + row * (widthHeight + verticalPadding) + arc4random() % (NSUInteger)(verticalPadding/2), widthHeight, widthHeight) roll:[diceRoll integerValue]];
+			JTDiceView *diceView = [[JTDiceView alloc] initWithFrame:CGRectMake(baseXOffset + column * (diceSize.width + horizontalPadding) + arc4random() % (NSUInteger)(horizontalPadding/2),
+																				baseYOffset + row * (diceSize.height + verticalPadding) + arc4random() % (NSUInteger)(verticalPadding/2),
+																				diceSize.width, diceSize.height) roll:[diceRoll integerValue]];
 			
 			[diceRollViews addObject:diceView];
 			[self addSubview:diceView];

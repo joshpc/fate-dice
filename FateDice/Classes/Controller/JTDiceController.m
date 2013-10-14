@@ -7,6 +7,7 @@
 //
 
 #import "JTDiceController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 //Views
 #import "JTRollView.h"
@@ -18,15 +19,21 @@
 	JTRollView *_diceView;
 	JTDiceRoll *_lastRoll;
 	NSMutableArray *_diceRolls;
+	SystemSoundID _diceSound;
 }
 
 - (instancetype)init
 {
 	self = [super init];
 	if (self) {
-		
+		AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"dice" ofType:@"mp3"]], &_diceSound);
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+	AudioServicesDisposeSystemSoundID(_diceSound);
 }
 
 - (void)loadView
@@ -38,7 +45,7 @@
 
 - (void)updateView
 {
-	_diceView.totalLabel.text = [NSString stringWithFormat:@"%ld", [_lastRoll rollTotal]];
+	_diceView.totalLabel.text = [NSString stringWithFormat:@"%ld", (long)[_lastRoll rollTotal]];
 	[_diceView showDiceWithRolls:_lastRoll.rolls];
 }
 
@@ -46,6 +53,8 @@
 
 - (void)rollPressed:(id)sender
 {
+	AudioServicesPlayAlertSound(_diceSound);
+	
 	JTDiceRoll *roll = [JTDiceRoll roll:kJTStandardDiceCount];
 	_lastRoll = roll;
 	[_diceRolls addObject:roll];
