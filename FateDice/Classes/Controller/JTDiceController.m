@@ -51,7 +51,7 @@
 
 #pragma mark - Button Presses
 
-- (void)rollPressed:(id)sender
+- (void)roll
 {
 	AudioServicesPlayAlertSound(_diceSound);
 	
@@ -60,6 +60,18 @@
 	[_diceRolls addObject:roll];
 	
 	[self updateView];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+	if (motion == UIEventSubtypeMotionShake) {
+		[self roll];
+	}
+}
+
+- (void)rollPressed:(id)sender
+{
+	[self roll];
 }
 
 @end

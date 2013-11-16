@@ -526,6 +526,7 @@
 				GCC_PREFIX_HEADER = "FateDice/FateDice-Prefix.pch";
 				INFOPLIST_FILE = "FateDice/FateDice-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -539,6 +540,7 @@
 				GCC_PREFIX_HEADER = "FateDice/FateDice-Prefix.pch";
 				INFOPLIST_FILE = "FateDice/FateDice-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
